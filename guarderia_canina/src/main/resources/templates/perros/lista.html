@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Perros</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <a href="/perros">Perros</a>
+        <a href="/duenos">Dueños</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/cuidadores">Cuidadores</a>
+    </nav>
+    <h1>Lista de Perros</h1>
+    <a href="/perros/nuevo" class="button">Registrar Nuevo Perro</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Peso</th>
+                <th>Dueño</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="perro : ${perros}">
+                <td th:text="${perro.id}"></td>
+                <td th:text="${perro.nombre}"></td>
+                <td th:text="${perro.raza}"></td>
+                <td th:text="${perro.edad}"></td>
+                <td th:text="${perro.peso}"></td>
+                <td th:text="${perro.dueno}"></td>
+                <td>
+                    <a th:href="@{'/perros/editar/' + ${perro.id}}" class="button">Editar</a> |
+                    <a th:href="@{'/perros/eliminar/' + ${perro.id}}" onclick="return confirm('¿Estás seguro de eliminar este perro?')" class="button">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <footer>
+        Guardería Canina © 2024
+    </footer>
+</body>
+</html>

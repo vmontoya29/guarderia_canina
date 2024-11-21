@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Dueño</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <a href="/perros">Perros</a>
+        <a href="/duenos">Dueños</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/cuidadores">Cuidadores</a>
+    </nav>
+    <h1>Editar Dueño</h1>
+    <form th:action="@{'/duenos/editar/' + ${dueno.id}}" th:object="${dueno}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required />
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" th:field="*{telefono}" required />
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" th:field="*{direccion}" required />
+		<label for="correoElectronico">Correo Electrónico:</label>
+		<input type="email" id="correoElectronico" th:field="*{correoElectronico}" required />
+        <button type="submit">Actualizar</button>
+    </form>
+    <footer>Guardería Canina © 2024</footer>
+</body>
+</html>

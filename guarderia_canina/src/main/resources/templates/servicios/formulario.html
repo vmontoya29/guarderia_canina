@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar Servicio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <a href="/perros">Perros</a>
+        <a href="/duenos">Dueños</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/cuidadores">Cuidadores</a>
+    </nav>
+    <h1>Registrar Nuevo Servicio</h1>
+    <form th:action="@{/servicios}" th:object="${servicio}" method="post">
+        
+        <label for="tipoServicio">Tipo de Servicio:</label>
+        <select id="tipoServicio" th:field="*{tipoServicio}">
+            <option th:each="tipo : ${tiposServicio}" th:value="${tipo}" th:text="${tipo}"></option>
+        </select>
+
+        
+        <label for="costo">Costo:</label>
+        <input type="number" step="0.01" id="costo" th:field="*{costo}" required />
+
+       
+        <label for="duracion">Duración:</label>
+        <input type="text" id="duracion" th:field="*{duracion}" required />
+
+        
+        <label for="perroId">Perro:</label>
+        <select id="perroId" th:field="*{perroId}">
+            <option th:each="perro : ${perros}" th:value="${perro.id}" th:text="${perro.nombre}"></option>
+        </select>
+
+        
+        <button type="submit">Registrar</button>
+    </form>
+    <footer>Guardería Canina © 2024</footer>
+</body>
+</html>

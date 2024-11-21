@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de dueños</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav>
+        <a href="/perros">Perros</a>
+        <a href="/duenos">duenos</a>
+        <a href="/servicios">Servicios</a>
+        <a href="/cuidadores">Cuidadores</a>
+    </nav>
+    <h1>Lista de dueños</h1>
+    <a href="/duenos/nuevo" class="button">Registrar Nuevo dueño</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Correo Electrónico</th>
+			<th>Acciones</th>
+        </tr>
+        <tr th:each="dueno : ${duenos}">
+            <td th:text="${dueno.id}"></td>
+            <td th:text="${dueno.nombre}"></td>
+            <td th:text="${dueno.telefono}"></td>
+            <td th:text="${dueno.direccion}"></td>
+            <td th:text="${dueno.correoElectronico}"></td>
+			<td>
+				 <a th:href="@{'/duenos/editar/' + ${dueno.id}}"class="button">Editar</a> |
+			     <a th:href="@{'/duenos/eliminar/' + ${dueno.id}}" onclick="return confirm('¿Estás seguro de eliminar este dueño?')"class="button">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+    <footer>Guardería Canina © 2024</footer>
+</body>
+</html>
